@@ -18,6 +18,7 @@
 #include "tdm_slave_wrapper.h"
 #include "tdm_master_simple.h"
 #include "i2c_control.h"
+#include "hw_setup.h"
 
 #include "xua_wrapper.h"
 #include "xua_conf.h"
@@ -112,6 +113,8 @@ void hub(chanend_t c_mic_array, chanend_t c_i2c_reg, chanend_t c_aud, audio_fram
 ///////// Tile main functions where we par off the threads ///////////
 
 void main_tile_0(chanend_t c_cross_tile[2]){
+    hw_setup();
+
     PAR_JOBS(
         PJOB(pdm_mic_16, (c_cross_tile[0])), // Note spawns MIC_ARRAY_NUM_DECIMATOR_TASKS threads
         PJOB(pdm_mic_16_front_end, ())

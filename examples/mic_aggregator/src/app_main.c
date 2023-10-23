@@ -119,7 +119,7 @@ void main_tile_0(chanend_t c_cross_tile[2]){
         PJOB(pdm_mic_16, (c_cross_tile[0])), // Note spawns MIC_ARRAY_NUM_DECIMATOR_TASKS threads
         PJOB(pdm_mic_16_front_end, ())
 #if CONFIG_TDM
-        ,PJOB(i2c_control, (c_cross_tile[1]))
+        // ,PJOB(i2c_control, (c_cross_tile[1]))
 #endif
     );
 }
@@ -140,9 +140,9 @@ void main_tile_1(chanend_t c_cross_tile[2]){
     PAR_JOBS(
         PJOB(hub, (c_cross_tile[0], c_cross_tile[1], c_aud.end_b, read_buffer_ptr)),
 #if CONFIG_TDM
-        PJOB(tdm16_slave, (read_buffer_ptr)),
-        PJOB(tdm16_master_simple, ()),
-        PJOB(tdm_master_monitor, ()) // Temp monitor for checking reception of TDM frames. Separate task so non-intrusive
+        PJOB(tdm16_slave, (read_buffer_ptr))
+        // PJOB(tdm16_master_simple, ()),
+        // PJOB(tdm_master_monitor, ()) // Temp monitor for checking reception of TDM frames. Separate task so non-intrusive
 #else
         PJOB(xua_wrapper, (c_aud.end_a)) // This spawns 4 tasks
 #endif

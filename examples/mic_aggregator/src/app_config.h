@@ -9,7 +9,7 @@
 #define MIC_ARRAY_CONFIG_MCLK_FREQ          24576000
 #define MIC_ARRAY_CONFIG_PDM_FREQ           3072000
 #define MIC_ARRAY_CONFIG_USE_DDR            1
-#define MIC_ARRAY_CONFIG_PORT_MCLK          XS1_PORT_1D // X0D11, J14 - Pin 15, '11'
+#define MIC_ARRAY_CONFIG_PORT_MCLK          XS1_PORT_1D // mclk_in
 #define MIC_ARRAY_CONFIG_PORT_PDM_CLK       XS1_PORT_1A // X0D00, J14 - Pin 2, '00'
 #define MIC_ARRAY_CONFIG_PORT_PDM_DATA      XS1_PORT_8B // X0D14..X0D21 | J14 - Pin 3,5,12,14 and Pin 6,7,10,11
 #define MIC_ARRAY_CONFIG_MIC_COUNT          16          // Application is currently hard coded to 16
@@ -38,11 +38,15 @@
 #define I2C_CONTROL_SLAVE_SCL               XS1_PORT_1N //X0D37, SCL
 #define I2C_CONTROL_SLAVE_SDA               XS1_PORT_1O //X0D38, SDA
 
+// Tile 0
+#define I2C_MASTER_SCL                      XS1_PORT_1L // SCL
+#define I2C_MASTER_SDA                      XS1_PORT_1M // SDA
+
 #define MIC_GAIN_INIT                       100         // Allowed values 0 to 65535
 
 // Tile 1
 #define USB_MCLK_COUNT_CLK_BLK              XS1_CLKBLK_3
-#define USB_MCLK_IN                         XS1_PORT_1D // X1D11, I2S MCLK
+#define USB_MCLK_IN                         XS1_PORT_1D // mclk_in
 
 // Tile 0
 #define XU316_MC_CTRL_PORT                  XS1_PORT_8D // EN_3V3 and EXT PLL + MCLK_DIR
